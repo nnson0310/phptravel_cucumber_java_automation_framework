@@ -7,8 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.interfaces.user.UserCommonUI;
-import utilities.FunctionHelper;
+import helpers.FunctionHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -292,6 +291,11 @@ public abstract class BasePage {
 
     protected String getElementText(WebDriver driver, String locator, String... dynamicValues) {
         return getElement(driver, getDynamicXpath(locator, dynamicValues)).getText();
+    }
+
+    protected String getElementProperty(WebDriver driver, String locator, String propertyName) {
+        jsExecutor = (JavascriptExecutor) driver;
+        return (String) jsExecutor.executeScript("return arguments[0]." + propertyName, getElement(driver, locator));
     }
 
     protected List<String> getElementsText(WebDriver driver, String locator) {
