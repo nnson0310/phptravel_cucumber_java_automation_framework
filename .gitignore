@@ -5,7 +5,9 @@ browserLogs/
 extentReport/
 scriptLogs/
 src/main/resources/downloadedFiles
+.idea/
 src/test/resources/cloud_credentials.properties
+log4j.out
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup

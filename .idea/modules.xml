@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/nopcommerce-automation-framework.iml" filepath="$PROJECT_DIR$/nopcommerce-automation-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/phptravel-automation-framwork.iml" filepath="$PROJECT_DIR$/phptravel-automation-framwork.iml" />
     </modules>
   </component>
 </project>

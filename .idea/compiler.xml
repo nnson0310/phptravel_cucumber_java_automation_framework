@@ -2,15 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="nopcommerce-automation-framework" />
+        <module name="phptravel-automation-framwork" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="nopcommerce-automation-framework" target="11" />
+      <module name="phptravel-automation-framwork" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
