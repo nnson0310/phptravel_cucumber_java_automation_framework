@@ -1,24 +1,35 @@
+@Login
 Feature: User can login to user dashboard
 
-  Background: Visit user login page
-    Given visit to "https://www.phptravels.net/login"
+  Background: redirect to login page
+    Given home page is displayed
+    When click to login header link
+    Then login page is displayed
 
-  @loginWithWrongEmail
+  @LoginWithWrongEmail
   Scenario Outline: Login with wrong email
-    When enter email with value = "<email>"
-    And enter password with value = "<password>"
+    When enter email = "<email>"
+    And enter password = "<password>"
     And click to login button
-    Then verify that error message = "Wrong credentials. try again!" is displayed
+    Then error message "Wrong credentials. try again!" is displayed
     Examples:
       | email                | password  |
       | admin@phptravels.net | demoadmin |
       | admin@phptravels     | demoadmin |
 
-  @loginWithWrongPassword
+  @LoginWithWrongPassword
   Scenario: Login with wrong password
     When enter credentials
-      | email                | password  |
-      | admin@phptravels.com | demouser  |
+      | email                | password |
+      | admin@phptravels.com | demouser |
     And click to login button
-    Then verify that error message = "Wrong credentials. try again!" is displayed
+    Then error message "Wrong credentials. try again!" is displayed
+
+  @LoginWithValidCredentials
+  Scenario: Login with valid credentials
+    When enter credentials
+      | email               | password |
+      | user@phptravels.com | demouser |
+    And click to login button
+    Then redirect to Dashboard page
 
