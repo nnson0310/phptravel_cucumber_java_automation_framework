@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
                 "junit:target/site/cucumber-report.xml"
         },
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@loginWithWrongPassword"
+        tags = "@UpdateProfile"
 )
 public class TestRunner {
 

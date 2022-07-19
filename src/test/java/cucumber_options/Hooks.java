@@ -1,6 +1,8 @@
 package cucumber_options;
 
 import commons.GlobalConstants;
+import custom_exceptions.InvalidDomainException;
+import enums.Domain;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -21,10 +23,13 @@ public class Hooks {
     private static final Logger log = Logger.getLogger(Hooks.class.getName());
 
     @Before
-    public static WebDriver openAndQuitBrowser(String url) {
+    public static WebDriver openAndQuitBrowser(String domainName) {
         // Run by Maven command line
         String browser = System.getProperty("BROWSER");
         System.out.println("Browser name run by command line = " + browser);
+
+        //identify what domain
+        Domain domain = Domain.valueOf(domainName.toUpperCase());
 
         if (driver == null) {
             try {
@@ -69,11 +74,19 @@ public class Hooks {
             }
             finally {
                 //close browser and quit driver no matter happening
-                Runtime.getRuntime().addShutdownHook(new Thread(new BrowserCleanup(url)));
+                Runtime.getRuntime().addShutdownHook(new Thread(new BrowserCleanup(domainName)));
             }
 
-//            driver.get(GlobalConstants.getGlobalConstants().getMainAppUrl());
-            driver.get(url);
+            // get correct url corresponding to domain name
+            if (domain == Domain.USER) {
+                driver.get(GlobalConstants.getGlobalConstants().getUserSiteUrl());
+            }
+            else if (domain == Domain.ADMIN) {
+                driver.get(GlobalConstants.getGlobalConstants().getAdminSiteUrl());
+            }
+            else {
+                throw new InvalidDomainException(domainName);
+            }
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
@@ -81,10 +94,10 @@ public class Hooks {
     }
 
     @After
-    public static void close(String url) {
+    public static void close(String domainName) {
         try {
             if (driver != null) {
-                openAndQuitBrowser(url).quit();
+                openAndQuitBrowser(domainName).quit();
                 log.info("------------- Closed the browser -------------");
             }
         } catch (UnreachableBrowserException e) {
@@ -93,14 +106,15 @@ public class Hooks {
     }
 
     private static class BrowserCleanup implements Runnable {
-        String url;
-        public BrowserCleanup(String url) {
-            this.url = url;
+        String domainName;
+
+        public BrowserCleanup(String domainName) {
+            this.domainName = domainName;
         }
 
         @Override
         public void run() {
-            close(url);
+            close(domainName);
         }
     }
 }

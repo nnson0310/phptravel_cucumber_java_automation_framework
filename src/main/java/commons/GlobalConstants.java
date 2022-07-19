@@ -34,7 +34,8 @@ public class GlobalConstants {
 
     private final int shortTimeout = 10;
     private final int longTimeout = 20;
-    private final String mainAppUrl = "https://www.phptravels.net";
+    private final String userSiteUrl = "https://www.phptravels.net";
+    private final String adminSiteUrl = "https://www.phptravels.net/admin";
     private final String projectPath = System.getProperty("user.dir");
     private final String osName = System.getProperty("os.name");
     private final String pathToMainResources = projectPath + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
