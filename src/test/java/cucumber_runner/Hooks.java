@@ -3,6 +3,7 @@ package cucumber_runner;
 import commons.BaseTest;
 import helpers.FunctionHelper;
 import helpers.LoggerHelper;
+import helpers.ReadJson;
 import inferfaces.Domain;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -25,16 +26,14 @@ public class Hooks {
     @Before(order = 0)
     public void getWebDriver() {
         this.driver = baseTest.initBrowserDriver(Domain.userDomainIdentifier);
-        System.out.println(driver);
     }
 
     @Before(value = "not @Login", order = 1)
-    public void logInToUserDashboard() {
-        String email = "user@phptravels.com";
-        String password = "demouser";
+    public void logInToUserDashboard() throws IOException {
+        String email = ReadJson.getReadJson().getValidUserCredentials().get("email");
+        String password = ReadJson.getReadJson().getValidUserCredentials().get("password");
 
         log.info("Login to user dashboard with email = " + email + " and password = " + password);
-        System.out.println(driver);
         FunctionHelper.logInToUserDashboard(email, password, driver);
     }
 

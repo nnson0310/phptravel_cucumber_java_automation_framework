@@ -51,7 +51,7 @@ public class GlobalConstants {
     private final String downloadFilePath = pathToMainResources + "downloadedFiles" + File.separator;
     private final String uploadFilePath = pathToMainResources + "uploadFiles" + File.separator;
 
-    private final String dataTestPath = pathToMainResources + "testData" + File.separator;
+    private final String testDataPath = pathToMainResources + "test_data" + File.separator;
     private final String browserLogFilePath = projectPath + File.separator + "browserLogs" + File.separator;
     private final String browserExtensionPath = projectPath + File.separator + "browserExtensions" + File.separator;
     private final String javaVersion = System.getProperty("java.version");
