@@ -1,10 +1,14 @@
 package helpers;
 
-import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.openqa.selenium.WebDriver;
+import page.objects.user.DashboardPage;
+import page.objects.user.HomePage;
+import page.objects.user.LoginPage;
+import page.objects.user.PageInitManager;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -121,4 +125,15 @@ public final class FunctionHelper {
         }
         return pdfText;
     }
+
+    public static DashboardPage logInToUserDashboard(String email, String password, WebDriver driver) {
+        LoginPage loginPage;
+        HomePage homePage = PageInitManager.getPageInitManager().getHomePage(driver);
+        DashboardPage dashboardPage;
+
+        loginPage = homePage.clickToLoginHeaderLink(driver);
+        dashboardPage = loginPage.login(driver, email, password);
+        return dashboardPage;
+    }
+
 }

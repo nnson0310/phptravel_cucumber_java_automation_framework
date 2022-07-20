@@ -1,8 +1,8 @@
 @Login
 Feature: User can login to user dashboard
 
-  Background: redirect to login page
-    Given home page is displayed
+  Background: redirect to login page from homepage
+    Given homepage is displayed
     When click to login header link
     Then login page is displayed
 

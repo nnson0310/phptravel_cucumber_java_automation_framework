@@ -1,11 +1,8 @@
 package step_definitions.user;
 
-import cucumber_options.Hooks;
-import helpers.LoggerHelper;
+import cucumber_runner.Hooks;
 import inferfaces.Domain;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
@@ -19,38 +16,25 @@ public class MyProfile {
 
     ProfilePage profilePage;
     DashboardPage dashboardPage;
-    HomePage homePage;
     LoginPage loginPage;
 
     Logger log;
 
     public MyProfile() {
-        log = LoggerHelper.getLogger(MyProfile.class);
-        driver = Hooks.openAndQuitBrowser(Domain.userDomainIdentifier);
-        homePage = PageInitManager.getPageInitManager().getHomePage(driver);
-    }
-
-    @Given("user already logged in")
-    public void login() {
-        String email = "user@phptravels.com";
-        String password = "demouser";
-
-        log.info("Pre Condition: User logins successfully with email = " + email + " and password = " + password);
-        loginPage = homePage.clickToLoginHeaderLink(driver);
-        dashboardPage = loginPage.login(driver, email, password);
+        log = Logger.getLogger(MyProfile.class);
+        driver = Hooks.initBrowserDriver(Domain.userDomainIdentifier);
         dashboardPage = PageInitManager.getPageInitManager().getDashboardPage(driver);
     }
 
     @When("click to MyProfile sidebar link")
     public void clickToMyProfileSidebarLink() {
         log.info("Pre Condition: Click to MyProfile sidebar link");
-        dashboardPage.clickToMyProfileSidebarLink(driver);
+        profilePage = dashboardPage.clickToMyProfileSidebarLink(driver);
     }
 
     @Then("MyProfile page is displayed")
     public void isMyProfilePageDisplayed() {
         log.info("Pre Condition: MyProfile page is displayed");
-        profilePage = PageInitManager.getPageInitManager().getProfilePage(driver);
     }
 
     @When("enter to {string} textbox with value = {string}")

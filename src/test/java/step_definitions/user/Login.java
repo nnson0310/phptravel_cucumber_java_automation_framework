@@ -1,7 +1,6 @@
 package step_definitions.user;
 
-import cucumber_options.Hooks;
-import helpers.LoggerHelper;
+import cucumber_runner.Hooks;
 import inferfaces.Domain;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -28,25 +27,25 @@ public class Login {
     Logger log;
 
     public Login() {
-        driver = Hooks.openAndQuitBrowser(Domain.userDomainIdentifier);
-        log = LoggerHelper.getLogger(Login.class);
+        log = Logger.getLogger(Login.class);
+        driver = Hooks.initBrowserDriver(Domain.userDomainIdentifier);
     }
 
-    @Given("home page is displayed")
-    public void homePageIsDisplayed() {
+    @Given("homepage is displayed")
+    public void isHomePageDisplayed() {
         log.info("Home page is displayed");
         homePage = PageInitManager.getPageInitManager().getHomePage(driver);
     }
 
     @When("click to login header link")
     public void clickToLoginHeaderLink() {
-        log.info("Go to login page");
-        loginPage = homePage.clickToLoginHeaderLink(driver);
+        log.info("Click to login header link");
+        homePage.clickToLoginHeaderLink(driver);
     }
 
-    @Then("login page is displayed")
-    public void loginPageIsDisplayed() {
-        log.info("Login page is displayed");
+    @Given("login page is displayed")
+    public void isLoginPageDisplayed() {
+        log.info("Click to login header link");
         loginPage = PageInitManager.getPageInitManager().getLoginPage(driver);
     }
 
