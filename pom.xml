@@ -70,6 +70,12 @@
         </dependency>
 
         <dependency>
+            <groupId>tech.grasshopper</groupId>
+            <artifactId>extentreports-cucumber7-adapter</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>${cucumber.version}</version>
@@ -148,6 +154,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <!--                   Uncomment below lines if you want to run testcases parallel -->
                     <!--                    <parallel>classes</parallel>-->
                     <!--                    <forkCount>3C</forkCount>-->
                     <!--                    <threadCount>3</threadCount>-->

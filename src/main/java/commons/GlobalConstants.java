@@ -32,11 +32,16 @@ public class GlobalConstants {
         return globalConstants;
     }
 
-    private final int shortTimeout = 10;
-    private final int longTimeout = 20;
+    // domain url
     private final String userSiteUrl = "https://www.phptravels.net";
     private final String adminSiteUrl = "https://www.phptravels.net/admin";
+
+    // timeout for implicit wait and explicit wait
+    private final int shortTimeout = 10;
+    private final int longTimeout = 20;
+
     private final String projectPath = System.getProperty("user.dir");
+    private final String extentReportConfigFilePath = projectPath + File.separator + "extent-config.xml";
     private final String osName = System.getProperty("os.name");
     private final String pathToMainResources = projectPath + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator;
     private final String reportScreenshot = pathToMainResources + "reportScreenshot" + File.separator;
