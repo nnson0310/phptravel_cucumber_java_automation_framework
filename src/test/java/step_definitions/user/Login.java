@@ -89,6 +89,6 @@ public class Login {
         dashboardPage = PageInitManager.getPageInitManager().getDashboardPage(driver);
 
         log.info("verify that 'welcome back' sidebar label is displayed");
-        Assert.assertTrue(dashboardPage.isWelcomeBackSidebarLabelDisplayed());
+        Assert.assertTrue(dashboardPage.isWelcomeBackSidebarLabelDisplayed(driver));
     }
 }

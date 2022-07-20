@@ -1,9 +1,12 @@
 package helpers;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import page.objects.user.DashboardPage;
 import page.objects.user.HomePage;
@@ -136,4 +139,9 @@ public final class FunctionHelper {
         return dashboardPage;
     }
 
+    public static byte[] getByteScreenshot(WebDriver driver) throws IOException {
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        byte[] fileContent = FileUtils.readFileToByteArray(src);
+        return fileContent;
+    }
 }
