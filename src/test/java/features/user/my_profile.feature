@@ -1,13 +1,13 @@
 @UpdateProfile
 Feature: user can update profile
 
-  Background: user already logged in
-    Given user already logged in
+  Background: MyProfile page is displayed
     When click to MyProfile sidebar link
     Then MyProfile page is displayed
 
   @UpdateProfileExceptPassword
   Scenario Outline: user updates all profile information except password
+    Given MyProfile page is displayed
     When enter to "firstname" textbox with value = "<firstname>"
     And enter to "lastname" textbox with value = "<lastname>"
     And enter to "phone" textbox with value = "<phone>"

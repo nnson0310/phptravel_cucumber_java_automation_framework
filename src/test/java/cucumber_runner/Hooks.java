@@ -1,8 +1,9 @@
-package cucumber_options;
+package cucumber_runner;
 
 import commons.GlobalConstants;
 import custom_exceptions.InvalidDomainException;
 import enums.Domain;
+import helpers.FunctionHelper;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -15,15 +16,16 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
+import page.objects.user.DashboardPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
     private static WebDriver driver;
-    private static final Logger log = Logger.getLogger(Hooks.class.getName());
+    private static final Logger log = Logger.getLogger(Hooks.class);
 
-    @Before
-    public static WebDriver openAndQuitBrowser(String domainName) {
+    @Before(order = 0)
+    public static WebDriver initBrowserDriver(String domainName) {
         // Run by Maven command line
         String browser = System.getProperty("BROWSER");
         System.out.println("Browser name run by command line = " + browser);
@@ -62,29 +64,21 @@ public class Hooks {
                         WebDriverManager.edgedriver().setup();
                         driver = new EdgeDriver();
                         break;
-                    case "opera":
+                    default:
                         WebDriverManager.operadriver().setup();
                         driver = new OperaDriver();
-                        break;
-                    default:
-                        WebDriverManager.chromedriver().setup();
-                        driver = new ChromeDriver();
-                        break;
                 }
-            }
-            finally {
-                //close browser and quit driver no matter happening
-                Runtime.getRuntime().addShutdownHook(new Thread(new BrowserCleanup(domainName)));
+            } finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(new CloseBrowserAndKillDriver()));
             }
 
             // get correct url corresponding to domain name
             if (domain == Domain.USER) {
                 driver.get(GlobalConstants.getGlobalConstants().getUserSiteUrl());
-            }
-            else if (domain == Domain.ADMIN) {
+                logInToUserDashboard();
+            } else if (domain == Domain.ADMIN) {
                 driver.get(GlobalConstants.getGlobalConstants().getAdminSiteUrl());
-            }
-            else {
+            } else {
                 throw new InvalidDomainException(domainName);
             }
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -93,28 +87,33 @@ public class Hooks {
         return driver;
     }
 
-    @After
-    public static void close(String domainName) {
+    // Comment below line if running only @Login feature
+    public static DashboardPage logInToUserDashboard() {
+        String email = "user@phptravels.com";
+        String password = "demouser";
+
+        log.info("Login to user dashboard with email = " + email + " and password = " + password);
+        return FunctionHelper.logInToUserDashboard(email, password, driver);
+    }
+
+    @After(order = 99999)
+    public static void close() {
         try {
             if (driver != null) {
-                openAndQuitBrowser(domainName).quit();
-                log.info("------------- Closed the browser -------------");
+                log.info("------------- Closed the browser and delete all cookies-------------");
+                driver.manage().deleteAllCookies();
+                driver.quit();
             }
         } catch (UnreachableBrowserException e) {
             log.info("------------- Can not close the browser -------------");
+            e.printStackTrace();
         }
     }
 
-    private static class BrowserCleanup implements Runnable {
-        String domainName;
-
-        public BrowserCleanup(String domainName) {
-            this.domainName = domainName;
-        }
-
+    public static class CloseBrowserAndKillDriver implements Runnable {
         @Override
         public void run() {
-            close(domainName);
+            close();
         }
     }
 }

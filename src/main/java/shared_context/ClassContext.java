@@ -1,4 +1,4 @@
-package step_definitions;
+package shared_context;
 
 import java.util.HashMap;
 import java.util.Map;

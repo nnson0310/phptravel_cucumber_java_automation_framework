@@ -1,4 +1,6 @@
-package step_definitions;
+package shared_context;
+
+import shared_context.ClassContext;
 
 public class ContextInit {
 //    public ClassContext classContext;

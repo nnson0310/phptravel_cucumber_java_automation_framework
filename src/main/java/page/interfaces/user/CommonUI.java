@@ -6,4 +6,5 @@ public interface CommonUI {
 //    String MY_PROFILE_SIDEBAR_LINK = "xpath=//div[@class='sidebar-menu-wrap']//a[contains(., 'My Profile')]";
     String MY_PROFILE_SIDEBAR_LINK = "xpath=//div[@class='sidebar-menu-wrap']//a[normalize-space(text())='My Profile']";
     String DYNAMIC_TEXTBOX_BY_NAME_ATTRIBUTE = "xpath=//input[@name='%s']";
+    String ADD_FUNDS_SIDEBAR_LINK = "xpath=//div[@class='sidebar-menu-wrap']//a[normalize-space(text())='Add Funds']";
 }

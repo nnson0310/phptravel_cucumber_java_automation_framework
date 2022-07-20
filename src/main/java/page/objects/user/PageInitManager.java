@@ -29,4 +29,12 @@ public class PageInitManager {
     public HomePage getHomePage(WebDriver driver) {
         return new HomePage(driver);
     }
+
+    public AddFundsPage getAddFundsPage(WebDriver driver) {
+        return new AddFundsPage(driver);
+    }
+
+    public PaymentPage getPaymentPage(WebDriver driver) {
+        return new PaymentPage(driver);
+    }
 }
