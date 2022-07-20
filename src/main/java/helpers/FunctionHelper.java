@@ -129,14 +129,13 @@ public final class FunctionHelper {
         return pdfText;
     }
 
-    public static DashboardPage logInToUserDashboard(String email, String password, WebDriver driver) {
+    public static void logInToUserDashboard(String email, String password, WebDriver driver) {
         LoginPage loginPage;
-        HomePage homePage = PageInitManager.getPageInitManager().getHomePage(driver);
         DashboardPage dashboardPage;
+        HomePage homePage = PageInitManager.getPageInitManager().getHomePage(driver);
 
         loginPage = homePage.clickToLoginHeaderLink(driver);
-        dashboardPage = loginPage.login(driver, email, password);
-        return dashboardPage;
+        loginPage.login(driver, email, password);
     }
 
     public static byte[] getByteScreenshot(WebDriver driver) throws IOException {

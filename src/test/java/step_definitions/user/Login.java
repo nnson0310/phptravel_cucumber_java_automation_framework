@@ -1,5 +1,6 @@
 package step_definitions.user;
 
+import commons.BaseTest;
 import cucumber_runner.Hooks;
 import inferfaces.Domain;
 import io.cucumber.datatable.DataTable;
@@ -26,9 +27,9 @@ public class Login {
 
     Logger log;
 
-    public Login() {
+    public Login(Hooks hooks) {
         log = Logger.getLogger(Login.class);
-        driver = Hooks.initBrowserDriver(Domain.userDomainIdentifier);
+        driver = hooks.driver;
     }
 
     @Given("homepage is displayed")
