@@ -2,7 +2,6 @@
 target/
 test-output/
 browserLogs/
-extentReport/
 scriptLogs/
 src/main/resources/downloadedFiles
 .idea/
