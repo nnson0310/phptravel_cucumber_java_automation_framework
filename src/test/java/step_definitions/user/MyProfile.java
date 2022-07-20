@@ -1,5 +1,6 @@
 package step_definitions.user;
 
+import commons.BaseTest;
 import cucumber_runner.Hooks;
 import inferfaces.Domain;
 import io.cucumber.java.en.And;
@@ -20,9 +21,9 @@ public class MyProfile {
 
     Logger log;
 
-    public MyProfile() {
+    public MyProfile(Hooks hooks) {
         log = Logger.getLogger(MyProfile.class);
-        driver = Hooks.initBrowserDriver(Domain.userDomainIdentifier);
+        driver = hooks.driver;
         dashboardPage = PageInitManager.getPageInitManager().getDashboardPage(driver);
     }
 

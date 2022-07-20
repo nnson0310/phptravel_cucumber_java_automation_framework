@@ -7,7 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/features/user/",
-        glue = "step_definitions",
+        // specify Hooks class if it is stored in other package
+        // than the same package as step_definitions
+        glue =  { "step_definitions", "cucumber_runner" },
         monochrome = true,
         dryRun = false,
         plugin = {

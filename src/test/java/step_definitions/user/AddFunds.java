@@ -1,5 +1,6 @@
 package step_definitions.user;
 
+import commons.BaseTest;
 import cucumber_runner.Hooks;
 import helpers.LoggerHelper;
 import inferfaces.Domain;
@@ -21,9 +22,9 @@ public class AddFunds {
 
     Logger log;
 
-    public AddFunds() {
+    public AddFunds(Hooks hooks) {
         log = LoggerHelper.getLogger(AddFunds.class);
-        driver = Hooks.initBrowserDriver(Domain.userDomainIdentifier);
+        driver = hooks.driver;
         dashboardPage = PageInitManager.getPageInitManager().getDashboardPage(driver);
     }
 
