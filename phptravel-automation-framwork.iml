@@ -42,7 +42,6 @@
     <orderEntry type="library" name="Maven: io.cucumber:messages:17.1.1" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:tag-expressions:4.1.0" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-expressions:15.0.1" level="project" />
-    <orderEntry type="library" name="Maven: io.cucumber:datatable:7.2.3" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:cucumber-plugin:7.2.3" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:docstring:7.2.3" level="project" />
     <orderEntry type="library" name="Maven: io.cucumber:html-formatter:17.0.0" level="project" />
@@ -109,5 +108,6 @@
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:android:1.23" level="project" />
     <orderEntry type="library" name="Maven: com.github.mifmif:generex:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: dk.brics.automaton:automaton:1.11-8" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: io.cucumber:datatable:7.2.3" level="project" />
   </component>
 </module>

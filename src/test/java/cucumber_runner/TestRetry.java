@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
         features = { "@target/failed-testcases.txt" },
         glue = "step_definitions",
         monochrome = true,
+        dryRun = false,
         plugin = {
                 "pretty",
                 "html:target/site/cucumber-report-default", "json:target/site/cucumber-report.json",

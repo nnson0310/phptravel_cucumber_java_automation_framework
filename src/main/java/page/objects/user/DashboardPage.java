@@ -11,7 +11,7 @@ public class DashboardPage extends UserBasePage {
         this.driver = driver;
     }
 
-    public boolean isWelcomeBackSidebarLabelDisplayed() {
+    public boolean isWelcomeBackSidebarLabelDisplayed(WebDriver driver) {
         waitForElementVisible(driver, DashboardPageUI.WELCOME_BACK_SIDEBAR_LABEL_SPAN);
         return isElementDisplayed(driver, DashboardPageUI.WELCOME_BACK_SIDEBAR_LABEL_SPAN);
     }

@@ -5,9 +5,14 @@ import custom_exceptions.InvalidDomainException;
 import enums.Domain;
 import helpers.FunctionHelper;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,6 +23,8 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 import page.objects.user.DashboardPage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
@@ -98,6 +105,7 @@ public class Hooks {
 
     @After(order = 99999)
     public static void close() {
+
         try {
             if (driver != null) {
                 log.info("------------- Closed the browser and delete all cookies-------------");
@@ -107,6 +115,15 @@ public class Hooks {
         } catch (UnreachableBrowserException e) {
             log.info("------------- Can not close the browser -------------");
             e.printStackTrace();
+        }
+    }
+
+    @AfterStep
+    public void attachScreenshot(Scenario scenario) throws IOException
+    {
+        if(scenario.isFailed())
+        {
+            scenario.attach(FunctionHelper.getByteScreenshot(driver), "image/png", "image");
         }
     }
 
