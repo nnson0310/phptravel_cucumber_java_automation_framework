@@ -24,5 +24,5 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE
 //        tags = "@SignUpAndLoginWithValidCredentials"
 )
-public class TestRunner {
+public class TestRunnerParallel {
 }

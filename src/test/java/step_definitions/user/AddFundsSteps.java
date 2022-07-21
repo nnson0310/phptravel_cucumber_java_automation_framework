@@ -1,9 +1,7 @@
 package step_definitions.user;
 
-import commons.BaseTest;
 import cucumber_runner.Hooks;
 import helpers.LoggerHelper;
-import inferfaces.Domain;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import page.objects.user.*;
 
-public class AddFunds {
+public class AddFundsSteps {
 
     WebDriver driver;
 
@@ -22,8 +20,8 @@ public class AddFunds {
 
     Logger log;
 
-    public AddFunds(Hooks hooks) {
-        log = LoggerHelper.getLogger(AddFunds.class);
+    public AddFundsSteps(Hooks hooks) {
+        log = LoggerHelper.getLogger(AddFundsSteps.class);
         driver = hooks.driver;
         dashboardPage = PageInitManager.getPageInitManager().getDashboardPage(driver);
     }

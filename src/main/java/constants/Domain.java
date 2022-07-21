@@ -1,4 +1,4 @@
-package inferfaces;
+package constants;
 
 public interface Domain {
     String userDomainIdentifier = "user";

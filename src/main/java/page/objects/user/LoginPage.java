@@ -47,4 +47,9 @@ public class LoginPage extends UserBasePage {
 
         return PageInitManager.getPageInitManager().getDashboardPage(driver);
     }
+
+    public boolean isRegisterSuccessMessageDisplayed(WebDriver driver, String message) {
+        waitForElementVisible(driver, LoginPageUI.SIGNUP_SUCCESS_MESSAGE_LABEL_DIV, message);
+        return isElementDisplayed(driver, LoginPageUI.SIGNUP_SUCCESS_MESSAGE_LABEL_DIV, message);
+    }
 }

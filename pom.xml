@@ -160,11 +160,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
-                    <!--                   Uncomment below lines if you want to run testcases parallel -->
-                    <!--                    <parallel>classes</parallel>-->
-                    <!--                    <forkCount>3C</forkCount>-->
-                    <!--                    <threadCount>3</threadCount>-->
-                    <!--                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
+<!--                    Uncomment below lines if you want to run testcases parallel -->
+<!--                    <parallel>methods</parallel>-->
+<!--                    <forkCount>3C</forkCount>-->
+<!--                    <threadCount>3</threadCount>-->
+<!--                    <perCoreThreadCount>false</perCoreThreadCount>-->
+<!--                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
                     <includes>
                         <include>**/cucumber_runner/TestRunner.java</include>
                         <!--   Uncomment below lines if you only want to retry failed testcases                     -->

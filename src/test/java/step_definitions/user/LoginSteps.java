@@ -1,8 +1,6 @@
 package step_definitions.user;
 
-import commons.BaseTest;
 import cucumber_runner.Hooks;
-import inferfaces.Domain;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,11 +13,15 @@ import page.objects.user.DashboardPage;
 import page.objects.user.HomePage;
 import page.objects.user.LoginPage;
 import page.objects.user.PageInitManager;
+import share_context.Context;
+import share_context.TestContext;
+
 import java.util.Map;
 
-public class Login {
+public class LoginSteps {
 
     WebDriver driver;
+    TestContext testContext;
 
     HomePage homePage;
     LoginPage loginPage;
@@ -27,9 +29,10 @@ public class Login {
 
     Logger log;
 
-    public Login(Hooks hooks) {
-        log = Logger.getLogger(Login.class);
+    public LoginSteps(Hooks hooks, TestContext testContext) {
+        log = Logger.getLogger(LoginSteps.class);
         driver = hooks.driver;
+        this.testContext = testContext;
     }
 
     @Given("homepage is displayed")
@@ -91,5 +94,15 @@ public class Login {
 
         log.info("verify that 'welcome back' sidebar label is displayed");
         Assert.assertTrue(dashboardPage.isWelcomeBackSidebarLabelDisplayed(driver));
+    }
+
+    @When("enter registered credentials")
+    public void enterRegisteredCredentials() {
+        String email = (String) testContext.getScenarioContext().getContext(Context.EMAIL);
+        String password = (String) testContext.getScenarioContext().getContext(Context.PASSWORD);
+
+        log.info("Enter registered email = " + email + " and password = " + password);
+        loginPage.enterToEmailTextbox(driver, email);
+        loginPage.enterToPasswordTextbox(driver, password);
     }
 }

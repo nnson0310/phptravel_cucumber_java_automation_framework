@@ -1,8 +1,6 @@
 package step_definitions.user;
 
-import commons.BaseTest;
 import cucumber_runner.Hooks;
-import inferfaces.Domain;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,7 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import page.objects.user.*;
 
-public class MyProfile {
+public class MyProfileSteps {
 
     WebDriver driver;
 
@@ -21,8 +19,8 @@ public class MyProfile {
 
     Logger log;
 
-    public MyProfile(Hooks hooks) {
-        log = Logger.getLogger(MyProfile.class);
+    public MyProfileSteps(Hooks hooks) {
+        log = Logger.getLogger(MyProfileSteps.class);
         driver = hooks.driver;
         dashboardPage = PageInitManager.getPageInitManager().getDashboardPage(driver);
     }
