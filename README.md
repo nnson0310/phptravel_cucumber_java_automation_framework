@@ -1,2 +1,2 @@
-### Skeleton project
+### Skeleton project automation
 
