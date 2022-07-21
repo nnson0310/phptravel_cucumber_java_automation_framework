@@ -16,12 +16,6 @@ import java.io.File;
 public class GlobalConstants {
 
     private static GlobalConstants globalConstants;
-    // Uncomment below lines if using method 1
-    // private final CloudCredentials cloudCredentials = ConfigFactory.create(CloudCredentials.class);
-
-    //Uncomment below lines if using method 3
-    // Dotenv dotenv = Dotenv.load();
-
     private GlobalConstants() {
     }
 
@@ -55,19 +49,4 @@ public class GlobalConstants {
     private final String browserLogFilePath = projectPath + File.separator + "browserLogs" + File.separator;
     private final String browserExtensionPath = projectPath + File.separator + "browserExtensions" + File.separator;
     private final String javaVersion = System.getProperty("java.version");
-
-    // Cloud testing info (browserStack)
-    // Method 1: Uncomment below lines if you store cloud credentials in .properties file (using java owner lib)
-    // private final String cloudUsername = cloudCredentials.cloudUsername();
-    // private final String cloudAutomateKey = cloudCredentials.cloudAutomateKey();
-
-    // Method 2: Uncomment below lines if you store cloud credentials in system variables (run setCloudCredentials.bat file)
-    private final String cloudUsername = System.getenv("BROWSERSTACK_USERNAME");
-    private final String cloudAutomateKey = System.getenv("BROWSERSTACK_AUTOMATE_KEY");
-
-    // Method 3: using .env file (.dotenv lib)
-    //    private final String cloudUsername = dotenv.get("BROWSERSTACK_USERNAME");
-    //    private final String cloudAutomateKey = dotenv.get("BROWSERSTACK_AUTOMATE_KEY");
-
-    private final String cloudUrl = "https://" + cloudUsername + ":" + cloudAutomateKey + "@hub-cloud.browserstack.com/wd/hub";
 }
