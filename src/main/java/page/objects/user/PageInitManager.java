@@ -1,6 +1,5 @@
 package page.objects.user;
 
-import commons.UserBasePage;
 import org.openqa.selenium.WebDriver;
 
 public class PageInitManager {
@@ -36,5 +35,9 @@ public class PageInitManager {
 
     public PaymentPage getPaymentPage(WebDriver driver) {
         return new PaymentPage(driver);
+    }
+
+    public SignUpPage getSignUpPage(WebDriver driver) {
+        return new SignUpPage(driver);
     }
 }

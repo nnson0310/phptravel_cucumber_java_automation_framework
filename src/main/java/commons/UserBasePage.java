@@ -8,8 +8,8 @@ import page.objects.user.*;
 public class UserBasePage extends BasePage {
 
     public LoginPage clickToLoginHeaderLink(WebDriver driver) {
-        waitForElementClickable(driver, HomePageUI.LOGIN_HEADER_BUTTON);
-        clickToElement(driver, HomePageUI.LOGIN_HEADER_BUTTON);
+        waitForElementClickable(driver, CommonUI.LOGIN_HEADER_BUTTON);
+        clickToElement(driver, CommonUI.LOGIN_HEADER_BUTTON);
         return PageInitManager.getPageInitManager().getLoginPage(driver);
     }
 
@@ -34,5 +34,11 @@ public class UserBasePage extends BasePage {
         waitForElementClickable(driver, CommonUI.ADD_FUNDS_SIDEBAR_LINK);
         clickToElement(driver, CommonUI.ADD_FUNDS_SIDEBAR_LINK);
         return PageInitManager.getPageInitManager().getAddFundsPage(driver);
+    }
+
+    public SignUpPage clickToSignUpHeaderLink(WebDriver driver) {
+        waitForElementClickable(driver, CommonUI.SIGN_UP_HEADER_LINK);
+        clickToElement(driver, CommonUI.SIGN_UP_HEADER_LINK);
+        return PageInitManager.getPageInitManager().getSignUpPage(driver);
     }
 }

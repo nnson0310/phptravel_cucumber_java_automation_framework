@@ -33,3 +33,8 @@ Feature: User can login to user dashboard
     And click to login button
     Then redirect to Dashboard page
 
+  @LoginWithRegisteredCredentials
+  Scenario: Login with registered credentials
+    When enter registered credentials
+    And click to login button
+    Then redirect to Dashboard page

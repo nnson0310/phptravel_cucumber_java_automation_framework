@@ -4,7 +4,7 @@ import commons.BaseTest;
 import helpers.FunctionHelper;
 import helpers.LoggerHelper;
 import helpers.ReadJson;
-import inferfaces.Domain;
+import constants.Domain;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -28,7 +28,7 @@ public class Hooks {
         this.driver = baseTest.initBrowserDriver(Domain.userDomainIdentifier);
     }
 
-    @Before(value = "not @Login", order = 1)
+    @Before(value = "not @Login and not @SignUp", order = 1)
     public void logInToUserDashboard() throws IOException {
         String email = ReadJson.getReadJson().getValidUserCredentials().get("email");
         String password = ReadJson.getReadJson().getValidUserCredentials().get("password");
