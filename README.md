@@ -16,7 +16,7 @@
 ### Important Note:
 + Language binding is java. Running stably with java version 11 (jdk 11.0.15 or 11.0.13)
 + This project does not using latest selenium version. Using selenium version is 3.141.59 (7/3/2022: latest stable version is 4.0.3)
-+ Public domain using for test: `https://phptravels.net/`
++ Public domain using for test: [`https://phptravels.net/`](https://phptravels.net/)
 + Using maven build tools to manage dependencies and third-party libraries
 + Assert lib is Junit4 (not TestNG)
 
