@@ -11,6 +11,7 @@
 8. [Docker grid](https://github.com/nnson0310/phptravel_cucumber_java_automation_framework#docker-grid)
 9. [Cloud Testing](https://github.com/nnson0310/phptravel_cucumber_java_automation_framework#cloud-testing)
 10. [Jenkins Pipeline](https://github.com/nnson0310/phptravel_cucumber_java_automation_framework#jenkins-pipeline)
+10. [License](https://github.com/nnson0310/phptravel_cucumber_java_automation_framework#license)
 
 ### Important Note:
 + Language binding is java. Running stably with java version 11 (jdk 11.0.15 or 11.0.13)
