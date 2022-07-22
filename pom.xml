@@ -168,10 +168,10 @@
 <!--                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
                     <includes>
                         <include>**/cucumber_runner/TestRunner.java</include>
-                        <!--   Uncomment below lines if you only want to retry failed testcases                     -->
-                        <!--                        <include>**/cucumber_runner/TestRetry.java</include>-->
-                        <!--   Uncomment below lines if you want to run both testcases and retry if there is any failed testcases                  -->
-                        <!--                        <include>**/cucumber_runner/Test*.java</include>-->
+<!--                           Uncomment below lines if you only want to retry failed testcases                     -->
+<!--                           <include>**/cucumber_runner/TestRetry.java</include>-->
+<!--                           Uncomment below lines if you want to run both testcases and retry if there is any failed testcases                  -->
+<!--                          <include>**/cucumber_runner/Test*.java</include>-->
                     </includes>
                 </configuration>
             </plugin>
